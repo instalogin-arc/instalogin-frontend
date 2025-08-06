@@ -15,13 +15,13 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
     if (response.ok) {
       alert('Login Successful! Redirecting...');
-      window.location.href = 'index.html'; // You can change this if needed
+      window.location.href = 'index.html'; // or dashboard.html if you want
     } else {
       const error = await response.json();
-      alert(`❌ Login failed: ${error.error || 'Unknown error'}`);
+      alert(`❌ Login failed: ${error.error}`);
     }
   } catch (err) {
     console.error('❌ Request Error:', err);
-    alert(`❌ Request failed: ${err.message}`);
+    alert('❌ Backend not reachable. Check your internet or server.');
   }
 });
